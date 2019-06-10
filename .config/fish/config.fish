@@ -10,7 +10,7 @@ set -gx EDITOR vim
 # abbreviations file
 source "$FISH_HOME/abbr.fish"
 # misc functions
-source "$FISH_HOME/functions/misc.fish
+source "$FISH_HOME/functions/misc.fish"
 
 # remap vim to use neovim
 alias vim-old (which vim)
