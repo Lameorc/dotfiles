@@ -1,0 +1,68 @@
+! Base16 Monokai
+! Scheme: Wimer Hazenberg (http://www.monokai.nl)
+
+! URxvt*background:                     #272822
+URxvt*foreground:                     #f8f8f2
+URxvt*cursorColor:                    #f8f8f2
+
+urxvt*transparent: true
+urxvt*shading: 25
+
+URxvt*scrollColor:                    #f8f8f2
+URxvt*highlightColor:                 #49483e
+URxvt*highlightTextColor:             #a59f85
+
+URxvt*color0:                         #272822
+URxvt*color1:                         #f92672
+URxvt*color2:                         #a6e22e
+URxvt*color3:                         #f4bf75
+URxvt*color4:                         #66d9ef
+URxvt*color5:                         #ae81ff
+URxvt*color6:                         #a1efe4
+URxvt*color7:                         #f8f8f2
+URxvt*color8:                         #75715e
+URxvt*color9:                         #f92672
+URxvt*color10:                        #a6e22e
+URxvt*color11:                        #f4bf75
+URxvt*color12:                        #66d9ef
+URxvt*color13:                        #ae81ff
+URxvt*color14:                        #a1efe4
+URxvt*color15:                        #f9f8f5
+
+URxvt*color16:                        #fd971f
+URxvt*color17:                        #cc6633
+URxvt*color18:                        #383830
+URxvt*color19:                        #49483e
+URxvt*color20:                        #a59f85
+URxvt*color21:                        #f5f4f1
+
+URxvt.font:             xft:DejaVuSansMono:size=12:antialias=true:style=Regular:autohint=true
+
+
+URxvt.perl-ext-common: default,matcher,hlight,font-size
+URxvt.url-launcher: /usr/bin/xdg-open
+
+URxvt.scrollBar_right: true
+! a bigger scrollback buffer
+URxvt.saveLines:        50000
+
+URxvt.keysym.Control-M-k: command:\033c
+! URxvt.keysym.Control-Shift-l:       echo -ne '\\033c'
+
+! xterm like movement
+URxvt.keysym.Control-Up:     \033[1;5A
+URxvt.keysym.Control-Down:   \033[1;5B
+URxvt.keysym.Control-Left:   \033[1;5D
+URxvt.keysym.Control-Right:  \033[1;5C
+
+! vim: filetype=yaml
+! rofi template
+! Base16 Monokai Dark, by Wimer Hazenberg (http://www.monokai.nl)
+
+! State:           'bg',    'fg',    'bgalt', 'hlbg',  'hlfg'
+rofi.color-normal: #272822, #f9f8f5, #272822, #f9f8f5, #272822
+rofi.color-urgent: #272822, #f92672, #272822, #f92672, #272822
+rofi.color-active: #272822, #66d9ef, #272822, #66d9ef, #272822
+!                  'bg',    'border'
+rofi.color-window: #272822, #f9f8f5
+
