@@ -1,0 +1,19 @@
+#TabsToolbar {
+    visibility: collapse;
+}
+
+#titlebar {
+    margin-bottom: -34px !important;
+}
+
+#titlebar-buttonbox {
+    height: 32px !important;
+}
+
+#nav-bar {
+    margin-right: 180px;
+}
+
+#main-window[sizemode="maximized"] #nav-bar {
+    margin-right: 138px;
+}
