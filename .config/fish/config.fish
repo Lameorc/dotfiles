@@ -2,15 +2,15 @@
 
 set FISH_HOME "$HOME/.config/fish"
 
-
-# use vi mode and vim editor
-fish_vi_key_bindings
+# use vim editor
 set -gx EDITOR vim
 
 # abbreviations file
 source "$FISH_HOME/abbr.fish"
 # misc functions
 source "$FISH_HOME/functions/misc.fish"
+# ssh-agent autostart
+setenv SSH_ENV $HOME/.ssh/environment
 
 # remap vim to use neovim
 alias vim-old (which vim)
