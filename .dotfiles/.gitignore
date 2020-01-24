@@ -1,0 +1,2 @@
+# ignore everything, only track explicitely added stuff; needs to be up-one level due to location in home
+./../**
