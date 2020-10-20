@@ -1,4 +1,4 @@
-set background=dark " tell vim that background will be dark
+set background=dark
 set rnu " show relavite numbers on left side
 set nu " combined with rnu, this will show absolute number for current line
 set shiftwidth=4 " columns are 4 spaces
@@ -17,6 +17,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " Opening nerdtree
@@ -43,4 +47,11 @@ autocmd FilterWritePre * :call TrimWhiteSpace()
 autocmd BufWritePre * :call TrimWhiteSpace()
 
 set title " nicer window title
+
+" Tell Vim which characters to show for expanded TABs,
+" trailing whitespace, and end-of-lines
+set listchars+=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+
+" Show list chars
+set list
 
