@@ -3,12 +3,12 @@
 LOCKER="bash $HOME/.config/i3/lock.sh && sleep 1"
 
 selection=$(echo -e "Lock\nSuspend\nHibernate\nShutdown" | rofi -dmenu)
-case $selection in 
+case $selection in
   Lock)
     eval $LOCKER
     ;;
   Suspend)
-    eval $LOCKER && systemctl suspend 
+    eval "bash $HOME/.config/i3/suspend.sh"
     ;;
   Hibernate)
     eval systemctl hibernate && $LOCKER
