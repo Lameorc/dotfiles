@@ -3,6 +3,7 @@ set rnu " show relavite numbers on left side
 set nu " combined with rnu, this will show absolute number for current line
 set shiftwidth=4 " columns are 4 spaces
 set smarttab " use tabs/spaces for indentation according to current file, spaces as default
+setlocal spell
 
 "install Plug if missing
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
