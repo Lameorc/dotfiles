@@ -1,16 +1,14 @@
 abbr -a nv nvim
+abbr -a tf terraform
 
-# k8s-a 
+# k8s-a
 abbr -a k kubectl
 abbr -a kgp kubectl get pods
 abbr -a klf kubectl logs -f
 
 abbr -a kn kubens
-abbr -a knma kubens sklik-master
-abbr -a knst kubens sklik-staging
 
-
-# git-a 
+# git
 abbr -a g git
 abbr -a gco git checkout
 abbr -a gcoma git checkout master
@@ -21,18 +19,6 @@ abbr -a t tig
 # py
 abbr -a py3 python3
 abbr -a py2 python2
-
-# sql-a 
-abbr -a mcsbdb mycli -h tt-k8s2-w1.ko.seznam.cz -usklik -pxxx -P
-
-# folder shortcuts
-abbr -a c-szn cd ~/dev/szn/
-abbr -a c-as cd ~/dev/szn/adminserver/
-abbr -a c-ss cd ~/dev/szn/sortserver/
-abbr -a c-els cd ~/dev/szn/event-log-server/
-abbr -a c-mad cd ~/dev/szn/mad-server/
-abbr -a c-mqa cd ~/dev/szn/main/qa/
-
 
 # config file shortcuts/reloads
 abbr -a rfishrc source ~/.config/fish/config.fish # reload fish.config
