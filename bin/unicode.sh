@@ -12,9 +12,9 @@
 # xclip -h >/dev/null || exit
 
 if [ -e ~/.config/fontawesome ]; then
-    chosen=$(grep -v "#" -h ~/.config/emoji ~/.config/fontawesome | rofi -dmenu ) #-i -l 20 -fn Monospace-18)
+    chosen=$(grep -v "#" -h ~/.config/emoji ~/.config/fontawesome | rofi -dmenu -i -l 20 -fn Monospace-18)
 else
-    chosen=$(grep -v "#" ~/.config/emoji | rofi -dmenu ) # -i -l 20 -fn Monospace-18)
+    chosen=$(grep -v "#" ~/.config/emoji | rofi -dmenu  -i -l 20 -fn Monospace-18)
 fi
 
 [ "$chosen" != "" ] || exit

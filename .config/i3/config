@@ -39,7 +39,7 @@ font pango:DejaVu Sans Mono 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec --no-startup-id "WINIT_X11_SCALE_FACTOR=1.15 alacritty"
 
 # rofi for app launcing
 bindsym $mod+d exec "rofi -modi:drun -show drun"
@@ -154,6 +154,8 @@ bindsym $mod+F2 move workspace to output down
 bindsym $mod+F3 move workspace to output up
 bindsym $mod+F4 move workspace to output right
 
+# reload xrandr setup using autorandr
+bindsym $mod+shift+F12 exec "autorandr -c && nitrogen --restore"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -193,7 +195,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
   position top
-  status_command i3blocks
+  status_command 2>/tmp/ir3blocks.err i3blocks -vvv | tee /tmp/i3blocks.out
   tray_output primary
   colors {
     separator #969896
@@ -244,7 +246,7 @@ exec_always "setxkbmap -option 'grp:alt_shift_toggle' -layout us,cz"
 
 # specific apps in floating
 for_window [title="Screen Layout Editor"] floating enable border normal
-for_window [class="keepassxc"] floating enable border normal
+# for_window [class="keepassxc"] floating enable border normal # disabled for now. Might reenable
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10; notify-send 'brightness up'"
@@ -252,6 +254,9 @@ bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10; notify-s
 
 # screenshots
 bindsym Print exec scrot
+
+# unicode inputs
+bindsym $mod+Shift+u exec --no-startup-id "sh ~/bin/unicode.sh"
 
 # Media player controls
 bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause"
@@ -265,9 +270,14 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% #i
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
+exec --no-startup-id "picom&"
 exec --no-startup-id "nitrogen --restore"
-exec --no-startup-id "google-drive-ocamlfuse ~/gdrive"
+# exec --no-startup-id "google-drive-ocamlfuse ~/gdrive"
 exec --no-startup-id "pasystray"
 exec --no-startup-id "nm-applet"
 
 exec --no-startup-id "sh -c 'setsid $HOME/bin/entr_watches.sh >/dev/null 2>&1 < /dev/null &'"
+exec --no-startup-id "blueman-applet &"
+
+# fix for bug in yad
+for_window [class="Yad"] floating enable
