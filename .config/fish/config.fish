@@ -15,8 +15,6 @@ set -gx ANSIBLE_NOCOWS 1
 source "$FISH_HOME/abbr.fish"
 # misc functions
 source "$FISH_HOME/functions/misc.fish"
-# secrets
-source "$FISH_HOME/secrets.fish"
 # ssh-agent autostart
 setenv SSH_ENV $HOME/.ssh/environment
 
