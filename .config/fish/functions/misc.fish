@@ -15,10 +15,6 @@ function dcup -w "docker-compose up"
   docker-compose up $argv
 end
 
-function nvm
-    bass source ~/.nvm/nvm.sh ';' nvm $argv
-end
-
 function docker-clean
     docker stop (docker ps -q)
     docker rm -f (docker ps -aq)
