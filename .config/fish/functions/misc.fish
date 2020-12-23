@@ -1,7 +1,7 @@
 #!/usr/bin/fish
 
 # alias for dotfiles git tracking
-function config -w "git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+function dotfilesctl -w "git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
     /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $argv
 end
 
