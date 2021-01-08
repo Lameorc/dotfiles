@@ -230,43 +230,13 @@ smart_gaps on
 smart_borders on
 hide_edge_borders smart
 
-# startup apps
-exec --no-startup-id ~/.config/i3/startup_apps.sh
-
-set $Locker ~/.config/i3/lock.sh && sleep 1
-bindsym Control+Mod1+l exec --no-startup-id $Locker
-
-# autolock
-exec --no-startup-id "xidlehook --time 5 --timer $Locker --not-when-fullscreen --not-when-audio &"
-
-# lock/suspend/logout interface
-# set $mode_system System (l) lock, (e) logout, (s) suspend
-# mode "$mode_system" {
-    # bindsym l exec --no-startup-id $Locker, mode "default"
-    # bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    # bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-#
-    # # back to normal: Enter or Escape
-    # bindsym Return mode "default"
-    # bindsym Escape mode "default"
-# }
-
 # bindsym $mod+Shift+Escape mode "$mode_system"
 bindsym $mod+Shift+Escape exec --no-startup-id "~/.config/i3/system_menu.sh"
 
-# keyboard
-# exec --no-startup-id 'setxkbmap -layout us,cz'
-# exec --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
-
-exec_always "setxkbmap -option 'grp:alt_shift_toggle' -layout us,cz"
 
 # specific apps in floating
 for_window [title="Screen Layout Editor"] floating enable border normal
 # for_window [class="keepassxc"] floating enable border normal # disabled for now. Might reenable
-
-# Screen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id "xbacklight -inc 10; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 10; notify-send 'brightness down'"
 
 # screenshots
 bindsym Print exec scrot
@@ -281,19 +251,26 @@ bindsym XF86AudioNext exec --no-startup-id "playerctl next"
 bindsym XF86AudioPrev exec --no-startup-id "playerctl previous"
 bindsym XF86AudioStop exec --no-startup-id "playerctl stop"
 
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+# Lock
+set $Locker ~/.config/i3/lock.sh && sleep 1
+bindsym Control+Mod1+l exec --no-startup-id $Locker
 
-exec --no-startup-id "picom&"
-exec --no-startup-id "nitrogen --restore"
-# exec --no-startup-id "google-drive-ocamlfuse ~/gdrive"
+# autostart apps
+exec --no-startup-id "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+exec --no-startup-id "nitrogen --restore; sleep 1; picom -b"
+exec --no-startup-id "xfce4-power-manager"
 exec --no-startup-id "pasystray"
+# exec --no-startup-id "google-drive-ocamlfuse ~/gdrive"
 exec --no-startup-id "nm-applet"
+exec --no-startup-id "redshift-gtk"
+exec --no-startup-id pamac-tray
+exec --no-startup-id start_conky_maia
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
+exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle' -layout us,cz"
 
 exec --no-startup-id "sh -c 'setsid $HOME/bin/entr_watches.sh >/dev/null 2>&1 < /dev/null &'"
-exec --no-startup-id "blueman-applet &"
+exec --no-startup-id "blueman-applet"
 
 # fix for bug in yad
 for_window [class="Yad"] floating enable
