@@ -74,5 +74,5 @@ rofi.color-active: #272822, #66d9ef, #272822, #66d9ef, #272822
 rofi.color-window: #272822, #f9f8f5
 
 ! cursor theme
-Xcursor.theme: Breeze-White
+Xcursor.theme: xcursor-breeze
 
