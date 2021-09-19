@@ -157,6 +157,9 @@ bindsym $mod+F4 move workspace to output right
 # reload xrandr setup using autorandr
 bindsym $mod+shift+F12 exec "autorandr -c && nitrogen --restore"
 
+# show known autorandr configs and apply selection
+bindsym $mod+shift+F11 exec --no-startup-id "bash ~/.config/i3/autorandr_menu.sh && nitrogen --restore"
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -245,8 +248,9 @@ bindsym Print exec scrot
 bindsym $mod+Shift+u exec --no-startup-id "sh ~/bin/unicode.sh"
 
 # Media player controls
-bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause"
-bindsym XF86AudioPause exec --no-startup-id "playerctl play-pause"
+set $PlayerCtlPlayPause "bash ~/.config/i3/play_pause_notify.sh"
+bindsym XF86AudioPlay exec --no-startup-id $PlayerCtlPlayPause
+bindsym XF86AudioPause exec --no-startup-id $PlayerCtlPlayPause
 bindsym XF86AudioNext exec --no-startup-id "playerctl next"
 bindsym XF86AudioPrev exec --no-startup-id "playerctl previous"
 bindsym XF86AudioStop exec --no-startup-id "playerctl stop"
@@ -257,14 +261,15 @@ bindsym Control+Mod1+l exec --no-startup-id $Locker
 
 # autostart apps
 exec --no-startup-id "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-exec --no-startup-id "nitrogen --restore; sleep 1; picom -b"
+exec --no-startup-id "nitrogen --restore"
+exec --no-startup-id "picom"
 exec --no-startup-id "xfce4-power-manager"
 exec --no-startup-id "pasystray"
 # exec --no-startup-id "google-drive-ocamlfuse ~/gdrive"
 exec --no-startup-id "nm-applet"
 exec --no-startup-id "redshift-gtk"
-exec --no-startup-id pamac-tray
-exec --no-startup-id start_conky_maia
+# exec --no-startup-id pamac-tray
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle' -layout us,cz"
