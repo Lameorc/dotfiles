@@ -1,5 +1,8 @@
 #!/bin/sh
-qdbus org.keepassxc.KeePassXC.MainWindow /keepassxc org.keepassxc.MainWindow.lockAllDatabases
+qdbus \
+    org.keepassxc.KeePassXC.MainWindow \
+    /keepassxc \
+    org.keepassxc.MainWindow.lockAllDatabases
 # disable dunst notification
 pkill -u "$USER" -USR1 dunst
 
