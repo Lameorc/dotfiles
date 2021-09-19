@@ -5,7 +5,7 @@ function dotfilesctl -w "git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
     /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $argv
 end
 
-function de
+function de -w "docker exec"
   docker exec $argv
 end
 
@@ -24,4 +24,9 @@ end
 # this is pretty dirty
 function dive
     docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:latest $argv
+end
+
+function codedirs
+    set dest (fd -t directory . ~/code/  | fzf --height=40% --reverse --border --info=inline)
+    cd $dest
 end
