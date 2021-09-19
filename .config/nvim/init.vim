@@ -5,6 +5,8 @@ set shiftwidth=4 " columns are 4 spaces
 set smarttab " use tabs/spaces for indentation according to current file, spaces as default
 "setlocal spell
 
+set tgc " 24 bit rgb colors
+
 "install Plug if missing
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -22,6 +24,9 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'Soares/base16.nvim'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " Opening nerdtree
@@ -55,4 +60,10 @@ set listchars+=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 
 " Show list chars
 set list
+
+" CoC.nvim config
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
