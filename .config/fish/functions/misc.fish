@@ -27,6 +27,10 @@ function dive
 end
 
 function codedirs
-    set dest (fd -t directory . ~/code/  | fzf --height=40% --reverse --border --info=inline)
-    cd $dest
+    set base_dir $HOME/Code
+    set dest (fd --base-directory $base_dir -t directory . | fzf --height=40% --reverse --border --info=inline)
+    if test -z $dest
+        return
+    end
+    cd $base_dir/$dest
 end

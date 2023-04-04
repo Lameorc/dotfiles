@@ -23,10 +23,15 @@ Plug 'vim-airline/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'Soares/base16.nvim'
 Plug 'sheerun/vim-polyglot'
+" TODO: ubuntu has old nvim, so this can't be used
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 call plug#end()
 
 " Opening nerdtree
@@ -42,7 +47,7 @@ set showmatch "Show matching brackets when text indicator is over them
 
 " Removes trailing spaces
 function! TrimWhiteSpace()
-%s/\s*$//
+silent %s/\s*$//
 ''
 endfunction
 
@@ -66,4 +71,19 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Jumps in fzf, if only this was not vimscript I could actually read it...
+function! GetJumps()
+  redir => cout
+  silent jumps
+  redir END
+  return reverse(split(cout, "\n")[1:])
+endfunction
+function! GoToJump(jump)
+    let jumpnumber = split(a:jump, '\s\+')[0]
+    execute "normal " . jumpnumber . "\<c-o>"
+endfunction
+command! Jumps call fzf#run(({
+        \ 'source': GetJumps(),
+        \ 'sink': function('GoToJump')}))
 

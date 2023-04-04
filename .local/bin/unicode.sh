@@ -26,3 +26,4 @@ notify-send "'$c' copied to clipboard." &
 s=$(echo "$chosen" | sed "s/.*; //" | awk '{print $1}')
 echo "$s" | tr -d '\n' | xclip
 notify-send "'$s' copied to primary." &
+

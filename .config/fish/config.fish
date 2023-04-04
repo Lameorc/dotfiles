@@ -36,7 +36,7 @@ set -x PATH "$HOME/.pyenv/bin" $PATH
 status --is-interactive; and . (pyenv init -|psub)
 status --is-interactive; and . (pyenv virtualenv-init -|psub)
 
-set -gx GOPATH ~/code/go/
+set -gx GOPATH ~/Code/go
 set -x PATH "$GOPATH/bin" $PATH
 
 # tfenv
@@ -70,11 +70,22 @@ register-python-argcomplete --shell fish pipx | source
 # pipx binary path
 set -x PATH /home/newmark/.local/bin $PATH
 
-# use slit as pager
-set -gx PAGER slit
-
-# but for `delta` use less, since delta itself has colors
-set -gx BAT_PAGER less
-
 # use starship prompt
 # starship init fish | source
+
+# Created by `pipx` on 2022-05-31 09:14:49
+set PATH $PATH /home/vpodhajsky/.local/bin
+
+# ADR tools
+set -x PATH $PATH $HOME/Code/npryce/adr-tools/src
+
+# direnv
+direnv hook fish | source
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /home/vpodhajsky/anaconda3/bin/conda
+    eval /home/vpodhajsky/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+end
+# <<< conda initialize <<<
+

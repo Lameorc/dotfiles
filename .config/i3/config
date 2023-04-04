@@ -33,7 +33,7 @@ client.background       #ffffff
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 11
+font pango:Hack Nerd Font 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -227,10 +227,11 @@ bar {
   }
 }
 
-gaps inner 14
-gaps outer -2
-smart_gaps on
-smart_borders on
+# TODO: install i3-gaps
+# gaps inner 14
+# gaps outer -2
+# smart_gaps on
+# smart_borders on
 hide_edge_borders smart
 
 # bindsym $mod+Shift+Escape mode "$mode_system"
@@ -240,12 +241,12 @@ bindsym $mod+Shift+Escape exec --no-startup-id "~/.config/i3/system_menu.sh"
 # specific apps in floating
 for_window [title="Screen Layout Editor"] floating enable border normal
 # for_window [class="keepassxc"] floating enable border normal # disabled for now. Might reenable
-
+for_window [class="Zeal"] floating enable
 # screenshots
 bindsym Print exec scrot
 
 # unicode inputs
-bindsym $mod+Shift+u exec --no-startup-id "sh ~/bin/unicode.sh"
+bindsym $mod+Shift+u exec --no-startup-id "sh ~/.local/bin/unicode.sh"
 
 # Media player controls
 set $PlayerCtlPlayPause "bash ~/.config/i3/play_pause_notify.sh"
@@ -279,3 +280,4 @@ exec --no-startup-id "blueman-applet"
 
 # fix for bug in yad
 for_window [class="Yad"] floating enable
+for_window [class="zoom"] floating enable  # zoom to floating, too many anoying popups

@@ -1,2 +1,1 @@
 bind generic 9 !@sh -c "echo %(commit) | xclip -selection clipboard"
-
